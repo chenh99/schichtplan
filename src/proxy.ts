@@ -24,7 +24,7 @@ export async function proxy(request: NextRequest) {
   // Erneuert die Sitzung und liefert die angemeldete Person (oder nichts).
   const { data } = await supabase.auth.getClaims();
 
-  if (!data?.claims && request.nextUrl.pathname.startsWith("/wochenplan")) {
+  if (!data?.claims && (request.nextUrl.pathname.startsWith("/wochenplan") || request.nextUrl.pathname.startsWith("/team"))) {
     const url = request.nextUrl.clone();
     url.pathname = "/anmelden";
     url.search = "?hinweis=anmelden";

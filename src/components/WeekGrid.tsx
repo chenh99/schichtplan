@@ -6,15 +6,17 @@ const DAYS = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samsta
 const SHORT_DAYS = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
 const START_TIMES = ["8:00", "10:30", "11:30", "12:00", "17:00", "18:00", "18:30"];
 
+type Person = { id: string; name: string };
+
 type Props = {
-  people: string[];
+  people: Person[];
 };
 
 export default function WeekGrid({ people }: Props) {
   const [plan, setPlan] = useState<Record<string, string>>({});
 
-  function setShift(person: string, day: number, shift: string) {
-    const key = `${person}-${day}`;
+  function setShift(personId: string, day: number, shift: string) {
+    const key = `${personId}-${day}`;
     setPlan((current) => {
       const next = { ...current };
       if (shift === "") {
@@ -27,7 +29,7 @@ export default function WeekGrid({ people }: Props) {
   }
 
   const dailyCounts = DAYS.map(
-    (_, index) => people.filter((person) => (plan[`${person}-${index}`] ?? "") !== "").length,
+    (_, index) => people.filter((person) => (plan[`${person.id}-${index}`] ?? "") !== "").length,
   );
 
   return (
@@ -54,21 +56,21 @@ export default function WeekGrid({ people }: Props) {
         </thead>
         <tbody>
           {people.map((person) => (
-            <tr key={person}>
+            <tr key={person.id}>
               <th
                 scope="row"
                 className="sticky left-0 z-10 border-b border-r border-border bg-card px-3 py-1 text-left font-medium"
               >
-                {person}
+                {person.name}
               </th>
               {DAYS.map((day, index) => {
-                const value = plan[`${person}-${index}`] ?? "";
+                const value = plan[`${person.id}-${index}`] ?? "";
                 return (
                   <td key={day} className="border-b border-border p-1">
                     <select
                       value={value}
-                      onChange={(event) => setShift(person, index, event.target.value)}
-                      aria-label={`${person}, ${day}`}
+                      onChange={(event) => setShift(person.id, index, event.target.value)}
+                      aria-label={`${person.name}, ${day}`}
                       className={`min-h-11 w-full rounded-lg border border-border px-1 text-sm ${
                         value ? "bg-accent-soft font-medium text-foreground" : "bg-card text-muted"
                       }`}

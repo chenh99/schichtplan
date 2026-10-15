@@ -41,7 +41,7 @@
 
 **Fertig, wenn:** Ich lege ein Konto an, sehe den Wochenplan, melde mich ab, versuche „Wochenplan“ direkt zu öffnen und lande auf „Anmelden“, melde mich wieder an und lade die Seite neu, ohne dass ich abgemeldet werde.
 
-## 3. Team-Liste: Mitarbeitende einmal anlegen ⬜ (nach Issue 2)
+## 3. Team-Liste: Mitarbeitende einmal anlegen ✅
 
 **Ziel:** Die Filialleiterin legt ihr Team einmal an und das Wochenraster nutzt es, damit sie nicht jede Woche Namen neu tippt.
 
