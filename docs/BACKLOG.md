@@ -1,4 +1,4 @@
-# Backlog — Mein Projekt
+# Backlog — Schichtplan
 
 > Ein Issue = ein Durchgang mit Claude. Oben steht, was als Nächstes dran ist.
 > Status: ⬜ offen · 🔧 in Arbeit · ✅ fertig (alle Kriterien im Browser geprüft)
