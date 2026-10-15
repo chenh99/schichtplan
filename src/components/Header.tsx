@@ -8,6 +8,9 @@ export default function Header() {
           <span className="inline-block h-3 w-3 rounded-full bg-accent" />
           Schichtplan
         </Link>
+        <Link href="/wochenplan" className="flex min-h-11 items-center text-sm font-medium">
+          Wochenplan
+        </Link>
       </div>
     </header>
   );

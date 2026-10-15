@@ -2,7 +2,7 @@
 
 > Eine Seite. Der Brief lebt: Nach jedem Test mit echten Menschen passen wir ihn an.
 
-**Stand:** 2026-10-13 — Erstfassung aus `/ndu-idee`, MVP kommt aus `/ndu-brainstorm`.
+**Stand:** 2026-10-15 — MVP geschnitten (3 Funktionen), Issues 1–3 im Backlog.
 
 ## 1. Für wen?
 Eine Filialleiterin im Einzelhandel oder in der Gastronomie, Mitte 30, mit einem Team von etwa 8 Leuten, überwiegend Teilzeit und Aushilfen. Sie baut jede Woche den Schichtplan neu.
@@ -19,9 +19,13 @@ Eine Web-App, in der die Filialleitung den Wochenplan schnell baut und das Team 
 - Keine automatische Plan-Erstellung durch KI: Die Leitung baut den Plan selbst.
 
 ## 5. Was gehört ins MVP? (3–5 Stichworte)
-Kommt aus `/ndu-brainstorm`.
+- Wochenraster: Schichten per Klick einteilen (Issue 1)
+- Team-Liste: Mitarbeitende einmal anlegen (Issue 2)
+- Plan teilen per Link, ohne Konto für das Team (Issue 3)
 
-**Später:** noch nichts gesammelt.
+**Später:**
+- Wunschtage vorab melden: Das Team trägt über einen Link ein, wann es nicht kann.
+- Warnung bei Lücken und Doppelungen im Raster.
 
 ## 6. Woran merken wir, dass es funktioniert?
 Wir glauben, dass Filialleitungen damit den Wochenplan schneller und mit weniger Chat-Chaos erstellen.
