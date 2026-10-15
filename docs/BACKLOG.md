@@ -9,7 +9,7 @@
 
 **Ziel:** Die Filialleiterin sieht die Woche als Tabelle, trägt pro Tag die Startzeit ein und sieht pro Tag, wie viele Leute eingeteilt sind, damit sie den Wochenplan an einem Ort baut statt auf Zettel oder in einer Chat-Nachricht und Lücken sofort erkennt.
 
-**Nicht im Umfang:** Speichern über das Neuladen hinaus, eigene Team-Liste (kommt in Issue 2, bis dahin gibt es feste Beispielnamen), mehrere Wochen, Endzeiten, Bereiche wie Küche oder Spülen, Teilen per Link, Login.
+**Nicht im Umfang:** Speichern über das Neuladen hinaus, eigene Team-Liste (kommt in Issue 3, bis dahin gibt es feste Beispielnamen), mehrere Wochen, Endzeiten, Bereiche wie Küche oder Spülen, Teilen per Link, Login.
 
 **Akzeptanzkriterien:**
 - Gegeben die Seite „Wochenplan“, wenn ich sie öffne, dann sehe ich eine Tabelle mit den sieben Wochentagen als Spalten und den Beispiel-Mitarbeitenden als Zeilen.
@@ -22,7 +22,26 @@
 
 **Fertig, wenn:** Ich öffne „Wochenplan“, trage in drei Feldern eine Startzeit und in einem „frei“ ein, entferne eine Startzeit wieder und sehe Tabelle und Tageszählung sofort passend.
 
-## 2. Team-Liste: Mitarbeitende einmal anlegen ⬜
+## 2. Login: Konto anlegen, anmelden, abmelden 🔧
+
+**Ziel:** Die Filialleiterin legt ein Konto an und meldet sich mit E-Mail und Passwort an, damit ihr Team und ihr Wochenplan nur ihr gehören und später gespeichert werden können. Dieses Issue kommt vor Issue 3.
+
+**Nicht im Umfang:** Passwort zurücksetzen, Anmeldung über Google oder andere Dienste, Konten für das Team (es sieht den Plan später nur per Link), Rollen, Profilseite, eigene Datenbank-Tabellen (kommen mit Issue 3). Einstellungen im Supabase-Projekt und Regeln lege ich erst nach deinem Okay an.
+
+**Akzeptanzkriterien:**
+- Gegeben die Seite „Anmelden“, wenn ich eine E-Mail-Adresse und ein Passwort mit mindestens 8 Zeichen eingebe und „Konto anlegen“ wähle, dann bin ich angemeldet und sehe den Wochenplan.
+- Gegeben ein angelegtes Konto und ich bin abgemeldet, wenn ich E-Mail und Passwort eingebe und „Anmelden“ wähle, dann sehe ich den Wochenplan.
+- Gegeben ich bin angemeldet, wenn ich im Header auf „Abmelden“ tippe, dann bin ich abgemeldet und sehe die Seite „Anmelden“.
+- Gegeben ich bin angemeldet, wenn ich die Seite neu lade, dann bleibe ich angemeldet.
+- Gegeben ich bin nicht angemeldet, wenn ich „Wochenplan“ direkt öffne, dann lande ich auf der Seite „Anmelden“ mit einem ganzen deutschen Satz, dass ich mich zuerst anmelden muss.
+- Gegeben ein Handy mit 375 px Breite, wenn ich die Seite „Anmelden“ öffne, dann scrollt die Seite nicht seitlich, der Header bleibt einzeilig, und die Felder und Buttons sind mindestens 44 px hoch.
+- Negativfall: Gegeben ein falsches Passwort oder eine unbekannte E-Mail-Adresse, wenn ich mich anmelde, dann erscheint ein ganzer deutscher Satz als Hinweis, und ich bleibe abgemeldet.
+- Negativfall: Gegeben ein Passwort mit weniger als 8 Zeichen, wenn ich ein Konto anlege, dann erscheint ein ganzer deutscher Satz als Hinweis, und es entsteht kein Konto.
+- Negativfall: Gegeben eine E-Mail-Adresse, die schon ein Konto hat, wenn ich noch einmal ein Konto anlege, dann erscheint ein ganzer deutscher Satz als Hinweis.
+
+**Fertig, wenn:** Ich lege ein Konto an, sehe den Wochenplan, melde mich ab, versuche „Wochenplan“ direkt zu öffnen und lande auf „Anmelden“, melde mich wieder an und lade die Seite neu, ohne dass ich abgemeldet werde.
+
+## 3. Team-Liste: Mitarbeitende einmal anlegen ⬜ (nach Issue 2)
 
 **Ziel:** Die Filialleiterin legt ihr Team einmal an und das Wochenraster nutzt es, damit sie nicht jede Woche Namen neu tippt.
 
@@ -39,49 +58,21 @@
 
 **Fertig, wenn:** Ich lege drei Namen an, benenne einen um, lade die Seite neu, sehe alle drei noch, und im Wochenplan stehen genau diese Namen in dieser Reihenfolge.
 
-## 3. Wochenplan speichern und Woche wechseln ⬜
+## 4. Plan speichern und per Link teilen ⬜
 
-**Ziel:** Die Filialleiterin plant die nächste Woche, während die aktuelle gültig bleibt, und eingeteilte Schichten bleiben erhalten, damit sie den Plan über mehrere Tage fertigstellen kann.
+**Ziel:** Die Filialleiterin speichert den Wochenplan und schickt dem Team einen Link, über den es die aktuelle Woche ohne Konto sieht, damit es nur noch einen gültigen Stand gibt.
 
-**Nicht im Umfang:** Teilen per Link, Vorwoche kopieren, Vorlagen, Wochen weiter als eine Woche voraus. Die Datenbank-Änderungen (Tabelle und Regeln) lege ich erst nach deinem Okay an.
+**Nicht im Umfang:** Andere Wochen und Wochenwechsel, Vorwoche kopieren, Wunschtage, Benachrichtigungen, Tauschen von Schichten, Konten für das Team, Ablaufdatum für Links. Die Datenbank-Änderungen (Tabellen und Regeln) lege ich erst nach deinem Okay an.
 
 **Akzeptanzkriterien:**
 - Gegeben eine eingetragene Schicht, wenn ich die Seite neu lade, dann steht sie noch da.
 - Gegeben der „Wochenplan“, wenn ich ihn öffne, dann sehe ich die aktuelle Woche mit Datum über der Tabelle (z. B. „13.–19. Okt. 2026“).
-- Gegeben die aktuelle Woche, wenn ich auf „Nächste Woche“ tippe, dann sehe ich das Raster der nächsten Woche mit ihrem Datum, und die aktuelle Woche bleibt unverändert.
-- Gegeben die nächste Woche, wenn ich auf „Diese Woche“ tippe, dann sehe ich wieder die aktuelle Woche mit ihren Schichten.
-- Negativfall: Gegeben ein Teammitglied mit eingetragenen Schichten, wenn ich es im Team entferne, dann sehe ich vorher einen ganzen deutschen Satz mit der Anzahl seiner Schichten und kann abbrechen.
-- Negativfall: Gegeben ich breche das Entfernen ab, wenn ich den Wochenplan öffne, dann stehen Person und Schichten unverändert da.
-
-**Fertig, wenn:** Ich trage Schichten für diese und nächste Woche ein, lade neu, wechsle zwischen beiden Wochen, und beide stimmen.
-
-## 4. Plan teilen per Link ⬜
-
-**Ziel:** Die Leitung schickt dem Team einen Link, über den es die aktuelle und die nächste Woche ohne Konto sieht, damit es nur noch einen gültigen Stand gibt.
-
-**Nicht im Umfang:** Wunschtage, Benachrichtigungen, Tauschen von Schichten, Konten für das Team, eigene Ansicht pro Person, Ablaufdatum für Links.
-
-**Akzeptanzkriterien:**
 - Gegeben ein eingeteilter Wochenplan, wenn ich auf „Link kopieren“ tippe, dann steht ein Link in der Zwischenablage, und ich sehe eine Bestätigung.
 - Gegeben der Link, wenn ich ihn in einem privaten Fenster ohne Anmeldung öffne, dann sehe ich die aktuelle Woche, aber keine Bedienelemente zum Ändern.
-- Gegeben die nächste Woche hat mindestens eine Schicht, wenn ich den Link öffne, dann kann ich zur nächsten Woche wechseln. Hat sie keine, gibt es diesen Wechsel nicht.
 - Gegeben ich ändere im Wochenplan eine Schicht, wenn ich den Link neu lade, dann zeigt er den neuen Stand.
 - Gegeben ein geteilter Link, wenn ich auf „Neuen Link erzeugen“ tippe und bestätige, dann funktioniert der alte Link nicht mehr, und der neue steht in der Zwischenablage.
-- Negativfall: Gegeben ein erfundener oder ersetzter Link, wenn ich ihn öffne, dann sehe ich einen ganzen deutschen Satz, dass es den Plan nicht gibt, mit einem Link zur Startseite.
 - Gegeben ein Handy mit 375 px Breite, wenn ich den Link öffne, dann scrollt die Seite nicht seitlich, und nur die Tabelle lässt sich seitlich wischen.
+- Negativfall: Gegeben ein erfundener oder ersetzter Link, wenn ich ihn öffne, dann sehe ich einen ganzen deutschen Satz, dass es den Plan nicht gibt, mit einem Link zur Startseite.
+- Negativfall: Gegeben ein Teammitglied mit eingetragenen Schichten, wenn ich es im Team entferne, dann sehe ich vorher einen ganzen deutschen Satz mit der Anzahl seiner Schichten und kann abbrechen.
 
-**Fertig, wenn:** Ich kopiere den Link, öffne ihn auf dem Handy oder in einem privaten Fenster, sehe den Plan, ändere ihn am Laptop und sehe die Änderung nach dem Neuladen. Dann erzeuge ich einen neuen Link, und der alte zeigt den Hinweis.
-
-## 5. Vorwoche kopieren ⬜
-
-**Ziel:** Die Filialleiterin übernimmt die Schichten der aktuellen Woche in die nächste und passt nur die Abweichungen an, damit sie einen ähnlichen Plan nicht jede Woche Feld für Feld neu einträgt.
-
-**Nicht im Umfang:** Vorlagen, Kopieren über mehrere Wochen, Kopieren einzelner Tage oder Personen.
-
-**Akzeptanzkriterien:**
-- Gegeben die nächste Woche ist leer, wenn ich auf „Aus dieser Woche übernehmen“ tippe, dann stehen dieselben Einträge wie in der aktuellen Woche im Raster.
-- Gegeben eine übernommene Woche, wenn ich darin eine Schicht ändere, dann bleibt die aktuelle Woche unverändert.
-- Gegeben ein Teammitglied wurde seit dieser Woche entfernt, wenn ich übernehme, dann werden seine Schichten nicht übernommen.
-- Negativfall: Gegeben die nächste Woche hat schon Einträge, wenn ich übernehmen will, dann sehe ich einen ganzen deutschen Satz, dass sie überschrieben würden, und kann abbrechen.
-
-**Fertig, wenn:** Ich übernehme die aktuelle Woche in die nächste, ändere dort zwei Felder und sehe, dass die aktuelle Woche gleich geblieben ist.
+**Fertig, wenn:** Ich trage Schichten ein, lade neu und sehe sie noch. Ich kopiere den Link, öffne ihn in einem privaten Fenster, sehe den Plan, ändere ihn und sehe die Änderung nach dem Neuladen. Dann erzeuge ich einen neuen Link, und der alte zeigt den Hinweis.

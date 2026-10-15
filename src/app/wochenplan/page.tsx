@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import WeekGrid from "@/components/WeekGrid";
+import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Wochenplan",
@@ -7,7 +9,13 @@ export const metadata: Metadata = {
 
 const EXAMPLE_PEOPLE = ["Anna", "Ben", "Chiara", "David", "Elif"];
 
-export default function WochenplanPage() {
+export default async function WochenplanPage() {
+  const supabase = await createClient();
+  const { data } = await supabase.auth.getClaims();
+  if (!data?.claims) {
+    redirect("/anmelden?hinweis=anmelden");
+  }
+
   return (
     <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">
       <h1 className="mb-2 text-3xl font-bold leading-tight">Wochenplan</h1>
